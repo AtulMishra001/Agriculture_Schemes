@@ -99,13 +99,12 @@ export async function loginAdmin(req, res) {
 
 export function handler(req, res) {
   try {
-    const cookies = cookie.parse(req.headers.cookie || "");
-    const token = cookies.token;
-
+    const token = req.cookies.token;
+    console.log("Cookies received:", req.headers.cookie);
     if (!token) return res.status(401).json({ message: "Not authenticated" });
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    res.status(200).json({ userId: decoded.id, role: decoded.role, name: decoded.name, email: decoded.email});
+    res.status(200).json({ userId: decoded.id, role: decoded.role, name: decoded.name, email: decoded.email });
   } catch (err) {
     res.status(401).json({ message: "Invalid token" });
   }

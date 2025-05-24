@@ -6,6 +6,7 @@ import { schemeRoutes } from "./routes/schemes.js"
 import { applicationRoutes } from "./routes/applications.js"
 import dotenv from "dotenv"
 import cors from "cors"
+import cookieParser from "cookie-parser";
 import { cropRoutes } from "./routes/crops.js"
 dotenv.config();
 
@@ -14,7 +15,8 @@ const app = express()
 app.use(cors({
     origin: "https://agriculture-schemes.vercel.app",
     credentials: true
-}))
+}));
+app.use(cookieParser());
 app.use(json({limit: "10mb"}))
 app.use("/api/user", userRoutes)
 app.use("/api/auth", authRoutes)
