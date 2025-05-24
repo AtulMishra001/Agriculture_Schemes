@@ -12,7 +12,7 @@ dotenv.config();
 const app = express()
 
 app.use(cors({
-    origin: ["http://localhost:3000", "*"],
+    origin: ["http://localhost:3000", "https://v0-sheetal-p1rjl05gf-manvendrasingh95968-gmailcoms-projects.vercel.app/"],
     credentials: true
 }))
 app.use(json({limit: "10mb"}))
