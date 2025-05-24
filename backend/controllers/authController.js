@@ -29,7 +29,7 @@ export async function registerUser(req, res) {
     res.setHeader("Set-Cookie", cookie.serialize("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 60 * 60 * 24 * 7, // 7 days
       path: "/"
     }));
@@ -56,7 +56,7 @@ export async function loginUser(req, res) {
      res.setHeader("Set-Cookie", cookie.serialize("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
+      sameSite: "none",
       maxAge: 60 * 60 * 24 * 7, // 7 days
       path: "/"
     }));
@@ -83,8 +83,8 @@ export async function loginAdmin(req, res) {
     res.setHeader("Set-Cookie", cookie.serialize("token", token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 60 * 60 * 24 * 7, // 7 days
+      sameSite: "none",
+      maxAge: 60 * 60 * 24 * 7, 
       path: "/"
     }));
     res.status(200).json({user})
@@ -114,7 +114,7 @@ export function logout(req, res) {
   res.setHeader("Set-Cookie", cookie.serialize("token", "", {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    sameSite: "none",
     expires: new Date(0),
     path: "/"
   }));
