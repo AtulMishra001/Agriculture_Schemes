@@ -26,7 +26,14 @@ export async function registerUser(req, res) {
     await newUser.save()
 
     const token = generateToken(newUser)
-    res.status(201).json({ user: newUser, token })
+    res.setHeader("Set-Cookie", cookie.serialize("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24 * 7, // 7 days
+      path: "/"
+    }));
+    res.status(201).json({ user: newUser})
   } catch (err) {
     res.status(500).json({ message: "Server error", error: err.message })
   }

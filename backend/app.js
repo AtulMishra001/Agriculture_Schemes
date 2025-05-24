@@ -12,7 +12,7 @@ dotenv.config();
 const app = express()
 
 app.use(cors({
-    origin: "https://agriculture-schemes.vercel.app/",
+    origin: "https://agriculture-schemes.vercel.app",
     credentials: true
 }))
 app.use(json({limit: "10mb"}))
