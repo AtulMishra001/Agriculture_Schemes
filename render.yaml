@@ -1,0 +1,20 @@
+# Exported from Render on 2025-05-24T13:16:12Z
+services:
+- type: web
+  name: Agriculture_Schemes
+  runtime: node
+  repo: https://github.com/AtulMishra001/Agriculture_Schemes
+  plan: free
+  envVars:
+  - key: JWT_SECRET
+    sync: false
+  - key: MONGODB_URI
+    sync: false
+  - key: PORT
+    sync: false
+  region: oregon
+  buildCommand: npm install
+  startCommand: node app.js
+  autoDeployTrigger: commit
+  rootDir: ./backend
+version: "1"
