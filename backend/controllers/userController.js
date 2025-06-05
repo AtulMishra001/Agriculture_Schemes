@@ -1,4 +1,5 @@
-import User from "../models/Users.js"
+import User from "../models/Users.js";
+import logger from "../utils/logger.js"
 
 export const getUserProfile = async (req, res) => {
   try {
@@ -39,7 +40,7 @@ export const updateUserProfile = async (req, res) => {
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" })
     }
-
+    logger.info(`User Profile updated successfully: ${email}`)
     res.status(200).json(updatedUser)
   } catch (err) {
     res.status(500).json({ message: "Failed to update profile", error: err.message })
@@ -77,6 +78,7 @@ export const uploadUserDocument = async (req, res) => {
 
         await user.save();
         console.log(user)
+        logger.info(`Ducument ${docName} uploaded Successfully by ${user.email}`)
         res.status(httpStatus).json({
             message: successMessage,
             documents: user.documents
@@ -85,6 +87,7 @@ export const uploadUserDocument = async (req, res) => {
     } catch (error) {
         console.error('Error processing user document:', error);
         if (error.name === 'ValidationError') {
+          logger.warn(`Document Upload failed: ${req.user.email}`)
             return res.status(400).json({ message: error.message, errors: error.errors });
         }
         res.status(500).json({ message: 'Server error while processing document.' });

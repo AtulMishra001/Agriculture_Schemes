@@ -1,5 +1,6 @@
 import Application from "../models/Application.js"
 import Scheme from "../models/Scheme.js"
+import logger from "../utils/logger.js"
 
 export const applyToScheme = async (req, res) => {
   try {
@@ -10,7 +11,9 @@ export const applyToScheme = async (req, res) => {
     if (!scheme) return res.status(404).json({ message: "Scheme not found" })
 
     const existingApp = await Application.findOne({ user: userId, scheme: schemeId })
-    if (existingApp) return res.status(400).json({ message: "Already applied to this scheme" })
+    if (existingApp){
+      logger.warn(`Applicarion failed can not apply to already applied scheme userID: ${userId}`)
+      return res.status(400).json({ message: "Already applied to this scheme" })}
 
     const {
       name,
@@ -50,6 +53,7 @@ export const applyToScheme = async (req, res) => {
     })
 
     const savedApp = await newApp.save()
+    logger.info(`Application successfull for scheme: ${schemeId} by user: ${userId}`)
     res.status(201).json(savedApp)
   } catch (err) {
     res.status(500).json({ message: "Failed to apply", error: err.message })
@@ -99,7 +103,7 @@ export const updateApplicationStatus = async (req, res) => {
     if (!updatedApp) {
       return res.status(404).json({ message: "Application not found" })
     }
-
+    logger.info(`applicarion ${appId} is ${status} by ${req.user.email}`)
     res.status(200).json(updatedApp)
   } catch (err) {
     res.status(500).json({ message: "Failed to update status", error: err.message })

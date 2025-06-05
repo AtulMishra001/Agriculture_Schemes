@@ -1,4 +1,5 @@
 import Crop from "../models/Crop.js"
+import logger from "../utils/logger.js";
 
 export async function getAllCrops(req, res) {
   try {
@@ -39,6 +40,7 @@ export async function createCrop(req, res) {
     });
 
     const createdCrop = await crop.save();
+    logger.info(`new crop added successfully by: ${req.user.email}`)
     res.status(201).json(createdCrop);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -56,6 +58,7 @@ export async function updateCrop(req, res) {
 
     Object.assign(crop, req.body);
     const updatedCrop = await crop.save();
+    logger.info(`${crop.name} crop updated successfully by ${req.user.email}`)
     res.status(200).json(updatedCrop);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -69,8 +72,9 @@ export async function deleteCrop(req, res) {
     if (!crop) {
       return res.status(404).json({ message: "Crop not found" });
     }
-
+    const cropName = crop.name;
     await crop.remove();
+    logger.info(`${cropName} crop is deleted by ${req.user.email}`)
     res.status(200).json({ message: "Crop deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });
