@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Search, Filter } from "lucide-react"
 
 export default async function SchemesPage() {
-    const res = await fetch("http://localhost:8000/api/schemes", {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/schemes`, {
       cache: "no-store"
     })
     const schemes: Scheme[] = await res.json()

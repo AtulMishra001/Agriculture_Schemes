@@ -16,7 +16,7 @@ import {
 } from "lucide-react"
 
 export default async function SchemeDetails({ params }: { params: { id: string } }) {
-  const res = await fetch(`http://localhost:8000/api/schemes/${params.id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/schemes/${params.id}`, {
     cache: "no-store"
   })
 

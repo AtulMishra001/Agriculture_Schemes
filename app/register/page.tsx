@@ -20,12 +20,13 @@ export default function Register() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    try {const res = await fetch("http://localhost:8000/api/auth/register", {
+    try {const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/auth/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({name, email, password, phone})
+      body: JSON.stringify({name, email, password, phone}),
+      credentials: "include"
     });
     const data = await res.json();
     if(!res.ok) {

@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Leaf, ArrowRight } from "lucide-react"
 
 export default async function CropsPage() {
-  const res = await fetch("http://localhost:8000/api/crops", {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/crops`, {
     method: "GET",
     cache: "no-store"
   })

@@ -261,7 +261,7 @@ export default function Header() {
             ) : (
               <div className="hidden md:flex items-center gap-2">
                 <Link
-                  href="admin/login"
+                  href="/admin/login"
                   className="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300"
                 >
                   {texts.common.admin}
@@ -392,7 +392,7 @@ export default function Header() {
                 <>
                   <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
                   <Link
-                    href="admin/login"
+                    href="/admin/login"
                     className="flex items-center gap-2 px-4 py-3 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium text-gray-700 dark:text-gray-300"
                     onClick={() => setIsMenuOpen(false)}
                   >

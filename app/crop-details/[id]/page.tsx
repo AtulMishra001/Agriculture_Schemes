@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Calendar, Droplets, Leaf, Thermometer, Sprout, ArrowLeft } from "lucide-react"
 
 export default async function CropDetails({ params }: { params: { id: string } }) {
-  const res = await fetch(`http://localhost:8000/api/crops/${params.id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/api/crops/${params.id}`, {
     cache: "no-store"
   })
   if (!res.ok) notFound()
