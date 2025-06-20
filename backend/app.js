@@ -13,7 +13,7 @@ dotenv.config();
 const app = express()
 
 app.use(cors({
-    origin: "https://agriculture-schemes.vercel.app",
+    origin: ["https://agriculture-schemes.vercel.app", "https://agriculture-schemes-9a11.vercel.app"],
     credentials: true
 }));
 app.use(cookieParser());
