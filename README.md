@@ -6,6 +6,10 @@ A full-stack web application that helps farmers discover, apply for, and track g
 
 The Farmer Schemes Portal is a comprehensive platform designed to connect farmers with government agricultural schemes and resources. This platform bridges the gap between farmers and government initiatives by providing easy access to scheme information, application processes, and agricultural resources.
 
+## 🌐 Hosted links
+- Front-end: [https://agriculture-schemes-9a11.vercel.app](https://agriculture-schemes-9a11.vercel.app/)
+- Back-end : [https://agriculture-schemes.onrender.com](https://agriculture-schemes.onrender.com/)
+
 ## Features
 
 ### For Farmers
