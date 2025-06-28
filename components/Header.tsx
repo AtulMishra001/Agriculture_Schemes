@@ -87,7 +87,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-full" />
+            <Image src="/image.png" alt="Logo" width={40} height={40} className="rounded-full" />
             <span className="text-lg font-bold text-green-600 dark:text-green-400 hidden sm:inline-block">
               {texts.common.appName}
             </span>

@@ -10,8 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 py-4">
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-full" />
-              <span className="text-md font-semibold text-green-600 dark:text-green-400">Farmer Schemes</span>
+              <Image src="/image.png" alt="Logo" width={40} height={40} className="rounded-full" />
+              <span className="text-md font-semibold text-green-600 dark:text-green-400">Agriculture Schemes</span>
             </div>
             <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
               Connecting farmers with government schemes and resources to enhance agricultural productivity and improve
